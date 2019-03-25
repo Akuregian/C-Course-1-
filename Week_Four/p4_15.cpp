@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 #include <math.h>
 
 using namespace std;
@@ -18,20 +19,24 @@ int main ()
     cout << endl;
 
     // User Input for Interest Rate per year (APR)
-    cout << "Whats your Interest Rate: ";
+    cout << "Whats your Annual Interest Rate: ";
     double interest = 0;
     cin >> interest;
     cout << endl;
 
+    if (initialInvestment == 0 || interest == 0) {
+        cout << "Erorr, input must be above 0" << endl;
+        exit(0);
+    }
+
     // Turn rate into a monthly rate
-    double monthlyRate = interest / 12;
+    double monthlyRate = interest / 12.0;
     monthlyRate = monthlyRate / 100;
 
-    // How many years to reach 1 mill
 
-        Total_Investment = initialInvestment;
+    Total_Investment = initialInvestment;
 
-
+    // While Loop too determine, How many years to reach 1 mill
     while (Total_Investment < 1000000) {
 
 
