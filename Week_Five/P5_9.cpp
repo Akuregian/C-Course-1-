@@ -156,7 +156,8 @@ int main()
     }
 
     // Determine the Day of week and print the first day
-    for (int i = 1; i < daysInMonth; i++) {
+    for (int i = dayWeek; i < daysInMonth; i++) {
+
         if (i % 7 == 0) {
             cout << endl;
         }
