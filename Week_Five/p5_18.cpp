@@ -4,49 +4,23 @@
 using namespace std;
 
 string ScannerCode(int digit)
+
 {
 
-string code = "";
- 
-
-	if (digit == 0) {
-		code = "||:::";
-	}
-
-	if (digit == 1) {
-		code = ":::||";
-	}
-
-	if (digit == 2) {
-		code = "::|:|";
-	}
-
-	if (digit == 3) {
-		code = "::||:";
-	}
-
-	if (digit == 4) {
-		code = ":|::|";
-	}
-
-	if (digit == 5) {
-		code = ":|:|:";
-	}
-
-	if (digit == 6) {
-		code = ":||::";
-	}
+	string code = "";
 	
-	if (digit == 7) {
-		code = "|:::|";
-	}
-
-	if (digit == 8) {
-		code = "|::|:";
-	}
-
-	if (digit == 9) {
-		code = "|:|::";
+	switch (digit) 
+	{
+		case 0: code = "||:::";
+		case 1: code = ":::||";
+		case 2: code = "::|:|";
+		case 3: code = "::||:";
+		case 4: code = ":|::|";
+		case 5: code = ":|:|:";
+		case 6: code = ":||::";
+		case 7: code = "|:::|";
+		case 8: code = "|::|:";
+		case 9: code = "|:|::";
 	}
 
 	return code;
@@ -57,8 +31,8 @@ int main()
 	cout << "Zipcode: ";
 	int zip;
 	cin >> zip;
-	if ((zip / 100000 ) > 0) {
-		cout << "Too many Digits Entered, Retry" << endl;
+	if (cin.fail() || (zip / 100000 ) > 0) {
+		cout << "Too many Digits Entered or not an integer" << endl;
 		return 0;
 	}
 	
