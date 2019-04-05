@@ -107,7 +107,6 @@ string Get_Months_Name(int month)
 int main() 
 {
     // Take user input for month, year and day
-
     int month;
     cout << " Month: ";
     cin >> month;
@@ -129,26 +128,26 @@ int main()
 
     // print the header
     cout << setw(9) << monthsName << " " << year << endl;
-
+    
     // print the days of week
     for (int i = 0; i <= 6; i++) {
         if (i == 0){
             cout << "Su ";
         }
         else if (i == 1) {
-            cout << "Mo ";
+            cout << "M ";
         }
         else if (i == 2) {
-            cout << "Tu ";
+            cout << "T ";
         }
         else if ( i == 3) {
-            cout << "We ";
+            cout << "W ";
         }
         else if (i == 4){
             cout << "Th ";
         }
         else if (i == 5) {
-            cout << "Fr ";
+            cout << "F ";
         }
         else if (i == 6) {
             cout << "Sa " << endl;
@@ -156,10 +155,16 @@ int main()
     }
 
     // Determine the Day of week and print the first day
+
+    for (int i = 0; i <= dayWeek; i++) {
+
+        cout << " ";
+    }
+
     for (int i = dayWeek; i < daysInMonth; i++) {
 
-        if (i % 7 == 0) {
-            cout << endl;
+        if (i % 6 == 0) {
+            cout << " " << i << endl;
         }
         else {
             cout << " " << i << " ";
