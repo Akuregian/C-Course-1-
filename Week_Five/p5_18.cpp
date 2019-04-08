@@ -3,6 +3,15 @@
 
 using namespace std;
 
+/*
+
+Function ScannerCode, takes in a single digit, then assigns the digit a bar code value,
+depending on the digit.
+@param digit is a single digit 
+@return return a barcode, assigned too that specific digit.
+
+*/
+
 string ScannerCode(int digit)
 
 {
@@ -36,7 +45,7 @@ int main()
 		return 0;
 	}
 	
-	// Seperate Each Digit
+	// Seperate Each Digit, so it can be passed into the ScannerCode Function
 	int digit_One = zip / 10000 % 10;
 	int digit_Two = zip / 1000 % 10;
 	int digit_Three = zip / 100 % 10;	
