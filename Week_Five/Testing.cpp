@@ -1,0 +1,16 @@
+#include <iostream>
+
+using namespace std;
+
+
+int main ()
+{
+	int value[5];
+	for (int i = 0; i < 5; i++) {
+		value[i] = 0;
+	
+	}
+cout << value[i] << endl;
+
+	
+}
