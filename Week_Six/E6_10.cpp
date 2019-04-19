@@ -64,11 +64,10 @@ bool same_elements(int a[], int b[], int size)
 		for(int j = 0; j < size; j++){
 			if (a[i] == b[j]) {
 				matches++;
+				break;
 			}
 		}
 	}
-
-	cout << matches << endl;
 	if (matches == size) {
 		return true;
 	}
