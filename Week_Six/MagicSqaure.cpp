@@ -31,7 +31,6 @@ bool isMagicSquare(int arr[][4], int size)
         for (int j = 0; j < size; j++)
         {
             value = value + arr[i][j];
-            cout << "[" << i << "]"<< "[" << j << "]" << arr[i][j] << endl;
         }
         values[index++] = value;
     }
@@ -43,17 +42,36 @@ bool isMagicSquare(int arr[][4], int size)
         for (int j = 0; j < size; j++)
         {
             value += arr[j][i];
-            cout << "[" << j << "]"<< "[" << i << "]" << endl;
         }
         values[index++] = value;
     }
 
-    for (int i = 0; i < size + size; i++)
+    int value = 0;
+    // loop over diagonals
+    for (int i = 0; i < size; i++)
     {
-        cout << "test  " << values[i] << endl;
+        value += arr[i][i];
+    }
+    values[index++] = value;
+
+    int value_1 = 0;
+    // // loop over diagonals
+    for (int i = size - 1; i >= 0; i--)
+    {
+        value_1 += arr[i][i];
+    }
+    values[index++] = value_1;
+
+    // Check if all elements stored in values are the same
+    for (int i = 0; i < size + size + 1; i++)
+    {
+        if (values[i] != values[i + 1])
+        {
+            return false;
+        }
     }
 
-    // loop over diagonals
+    return true;
 }
 
 void printMatrix(int arr[][4], int size)
@@ -120,22 +138,29 @@ void genMatrix(int arr[][4], int size)
 
 int main()
 {
-    srand(time(NULL));
+    // srand(time(NULL));
     // 4 x 4 array with 16 values from user
     const int size = 4;
-    // int matrix[size][size];
-    int matrix[size][size] = {
-        {16, 3, 2, 13}, // 34
-        {5, 10, 11, 8},// 34
-        {9, 6, 7, 12},// 
-        {4, 15, 14, 1}};// 
+    int matrix[size][size];
+    // int matrix[size][size] = {
+    //     {16, 3, 2, 13},
+    //     {5, 10, 11, 8},
+    //     {9, 6, 7, 12},
+    //     {4, 15, 14, 1}};
 
     cout << "Please enter in the array information!" << endl;
-    // genMatrix(matrix, size);
-    // gatherUserInput(matrix, size);
+    genMatrix(matrix, size);
+    gatherUserInput(matrix, size);
 
     // printMatrix(matrix, size);
-    isMagicSquare(matrix, size);
+    if (isMagicSquare(matrix, size))
+    {
+        cout << "Matrix is magical" << endl;
+    }
+    else
+    {
+        cout << "No magic here" << endl;
+    }
 
     return 0;
 }
