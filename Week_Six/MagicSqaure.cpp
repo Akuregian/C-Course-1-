@@ -2,6 +2,7 @@
 
 using namespace std;
 
+// Utility function to find the index of an element
 int indexOf(int num, int arr[], int size)
 {
     for (int i = 0; i < size; i++)
@@ -14,15 +15,13 @@ int indexOf(int num, int arr[], int size)
     return -1;
 }
 
+// Check to see if givin matrix is a magic square
 bool isMagicSquare(int arr[][4], int size)
 {
+    // Create array to store the value of all the columns, rows, and diagonals
     int values[size + size + 2];
+    // the index used to move to interate each value in the values array
     int index = 0;
-
-    for (int i = 0; i < size + size; i++)
-    {
-        values[i] = 0;
-    }
 
     // loop over rows
     for (int i = 0; i < size; i++)
@@ -74,6 +73,7 @@ bool isMagicSquare(int arr[][4], int size)
     return true;
 }
 
+// Utility function to print out given matrix
 void printMatrix(int arr[][4], int size)
 {
     for (int i = 0; i < size; i++)
@@ -93,6 +93,8 @@ void printMatrix(int arr[][4], int size)
     }
 }
 
+// Gather input from the user
+// TODO: add check for 0 > n < 17
 void gatherUserInput(int arr[][4], int size)
 {
     int userInput;
@@ -108,6 +110,7 @@ void gatherUserInput(int arr[][4], int size)
     {
         for (int j = 0; j < size; j++)
         {
+            cout << "[" << i << "]" << "[" << j << "]: ";
             cin >> userInput;
             if (indexOf(userInput, userData, length) > -1)
             {
@@ -142,6 +145,9 @@ int main()
     // 4 x 4 array with 16 values from user
     const int size = 4;
     int matrix[size][size];
+    // generate a false matrix
+    // genMatrix(matrix, size);
+    // Test matrix for true test
     // int matrix[size][size] = {
     //     {16, 3, 2, 13},
     //     {5, 10, 11, 8},
@@ -149,7 +155,6 @@ int main()
     //     {4, 15, 14, 1}};
 
     cout << "Please enter in the array information!" << endl;
-    genMatrix(matrix, size);
     gatherUserInput(matrix, size);
 
     // printMatrix(matrix, size);
