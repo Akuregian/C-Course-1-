@@ -46,18 +46,18 @@ bool isMagicSquare(int arr[][4], int size)
     }
 
     int value = 0;
-    // loop over diagonals
+    // loop over diagonals - top left to bottom right
     for (int i = 0; i < size; i++)
     {
         value += arr[i][i];
     }
     values[index++] = value;
 
+    // // loop over diagonals - top right to bottom left
     int value_1 = 0;
-    // // loop over diagonals
-    for (int i = size - 1; i >= 0; i--)
+    for (int i = size - 1, j = 0; i >= 0; i--, j++)
     {
-        value_1 += arr[i][i];
+        value_1 += arr[j][i];
     }
     values[index++] = value_1;
 
@@ -110,7 +110,8 @@ void gatherUserInput(int arr[][4], int size)
     {
         for (int j = 0; j < size; j++)
         {
-            cout << "[" << i << "]" << "[" << j << "]: ";
+            cout << "[" << i << "]"
+                 << "[" << j << "]: ";
             cin >> userInput;
             if (indexOf(userInput, userData, length) > -1)
             {
@@ -144,18 +145,18 @@ int main()
     // srand(time(NULL));
     // 4 x 4 array with 16 values from user
     const int size = 4;
-    int matrix[size][size];
+    // int matrix[size][size];
     // generate a false matrix
     // genMatrix(matrix, size);
     // Test matrix for true test
-    // int matrix[size][size] = {
-    //     {16, 3, 2, 13},
-    //     {5, 10, 11, 8},
-    //     {9, 6, 7, 12},
-    //     {4, 15, 14, 1}};
+    int matrix[size][size] = {
+        {16, 3, 2, 13},
+        {5, 10, 11, 8},
+        {9, 6, 7, 12},
+        {4, 15, 14, 1}};
 
     cout << "Please enter in the array information!" << endl;
-    gatherUserInput(matrix, size);
+    // gatherUserInput(matrix, size);
 
     // printMatrix(matrix, size);
     if (isMagicSquare(matrix, size))
