@@ -6,28 +6,18 @@ using namespace std;
 string first_str = "";
 string second_str = "";
 
-bool is_palindrome(string str) 
-{
-    bool reversed = false;
-    
-    for (int i = 0; i < str.length(); i++) {
-        first_str = str.substr(i, 1);
-    }
 
-    for (int i = str.length(); i >= 0; i--) {
-        second_str = str.substr(i, 1);
+bool is_palindrome(string str, int start, int end) 
+{  
+    if (str.length() < 2){
+        return true;
     }
+    if(str[0] != str[str.length() - 1]) {
+        cout << "No match";
+        return false;
 
-    if ( first_str == second_str) {
-        return reversed = true;
-    }
-    else
-    {
-        return reversed = false;
-
-    }
+    return is_palindrome(str, start++, end--);
 } 
-
 
 int main()
 {
@@ -35,13 +25,6 @@ int main()
     string input = "";
     cin >> input;
 
-    int results = is_palindrome(input);
+    int results = is_palindrome(input, 0, input.length() - 1);
 
-    if (results == 0) {
-        cout << "False";
-    }
-    else if (results == 1) {
-        cout << "True";
-
-    }
 }
