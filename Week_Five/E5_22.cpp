@@ -7,16 +7,22 @@ string first_str = "";
 string second_str = "";
 
 
-bool is_palindrome(string str, int start, int end) 
+bool is_palindrome(string str) 
 {  
     if (str.length() < 2){
         return true;
     }
-    if(str[0] != str[str.length() - 1]) {
-        cout << "No match";
-        return false;
+    else{
 
-    return is_palindrome(str, start++, end--);
+        if(str[0] != str[str.length() - 1]) {
+            return false;
+        }
+        else
+        {
+            string newString = str.substr(1, str.length() - 2);
+            return is_palindrome(newString);
+        }
+    }
 } 
 
 int main()
@@ -25,6 +31,14 @@ int main()
     string input = "";
     cin >> input;
 
-    int results = is_palindrome(input, 0, input.length() - 1);
+    int results = is_palindrome(input);
 
+    if (results) {
+        cout << "The word entered is a Palindrome" << endl;
+    }
+    else {
+        cout << "The word entered is not a Palindrome" << endl;
+    }
+
+    return 0;
 }
