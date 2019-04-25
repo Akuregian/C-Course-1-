@@ -3,6 +3,8 @@ class Board
 private:
   int **board;
   int _size;
+  int _activePlayer;
+  char _players[2];
   void allocArray()
   {
     board = new int *[_size];
@@ -16,31 +18,11 @@ public:
   Board();
   Board(int);
   void printBoard();
+  void setPlayers(char piece);
+  void printPlayersInfo();
   bool setPiece();
+  char getPlayer(int index);
+  int getActivePlayer();
   int getSize();
   ~Board();
 };
-
-// class Matrix
-// {
-// public:
-//   Matrix();                  //Default constructor
-//   Matrix(int m, int n);      //Main constructor
-//   void setVal(int m, int n); //Method to set the val of [i,j]th-entry
-//   void printMatrix();        //Method to display the matrix
-//   ~Matrix();                 //Destructor
-
-// private:
-//   int m, n;
-//   int **p;
-
-//   //allocate the array
-//   void allocArray()
-//   {
-//     p = new int *[m];
-//     for (int i = 0; i < m; i++)
-//     {
-//       p[i] = new int[n];
-//     }
-//   }
-// };
