@@ -3,25 +3,10 @@
 #include <string>
 using namespace std;
 
-//Default constructor
-Board::Board()
-{
-  _activePlayer = 0;
-  _size = 3;
-  allocArray();
-  int count = 1;
-  for (int i = 0; i < _size; i++)
-  {
-    for (int j = 0; j < _size; j++)
-    {
-      board[i][j] = count++;
-    }
-  }
-}
-
 //Main construcor
 Board::Board(int size)
 {
+  _isGameOver = false;
   _activePlayer = 0;
   _size = size;
   allocArray();
@@ -30,9 +15,40 @@ Board::Board(int size)
   {
     for (int j = 0; j < _size; j++)
     {
-      board[i][j] = count++;
+      board[i][j] = '0' + count++;
     }
   }
+}
+
+bool Board::getGameStatus()
+{
+  return _isGameOver;
+}
+
+bool Board::setPiece(int location)
+{
+  int i = (location - 1) / 3;
+  int j = (location - 1) % 3;
+  // get active player index
+  int currentPlayer = this->getActivePlayer();
+  char player = this->getPlayer(currentPlayer);
+
+  if (location > 9 || location < 1 || board[i][j] == 'X' || board[i][j] == 'O')
+  {
+    return false;
+  }
+
+  board[i][j] = player;
+  if (_activePlayer == 0)
+  {
+    _activePlayer = 1;
+  }
+  else
+  {
+    _activePlayer = 0;
+  }
+
+  return true;
 }
 
 char Board::getPlayer(int index)
@@ -64,6 +80,11 @@ void Board::printPlayersInfo()
 {
   cout << "Player 1 is " << _players[0] << endl;
   cout << "Player 2 is " << _players[1] << endl;
+}
+
+void Board::checkWin()
+{
+  
 }
 
 void Board::printBoard()

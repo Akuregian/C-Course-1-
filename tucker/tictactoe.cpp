@@ -1,4 +1,6 @@
 #include <iostream>
+#include <typeinfo>
+#include <unistd.h>
 #include "board.h"
 
 using namespace std;
@@ -22,28 +24,40 @@ int main()
     }
     else
     {
-      cout << "Invalid option!" << endl;
+      cout << "Invalid option! Please choose X or O" << endl;
     }
   }
   board.printPlayersInfo();
-  while (true)
+  while (!board.getGameStatus())
   {
-    // print seperator
-    cout << "+++++++++++++" << endl;
-
     // get active player index
     int currentPlayer = board.getActivePlayer();
-    // 
+    // get current player piece
     char player = board.getPlayer(currentPlayer);
-    cout << "Player " << (currentPlayer + 1) << "'s turn (" << player << "):" << endl;
-    cout << "Please Choose Where to place your piece." << endl;
+
+    cout << "Player " << (currentPlayer + 1) << "'s turn (" << player << ")" << endl;
     board.printBoard();
+    cout << "Please Choose Where to place your piece. (1 - 9): ";
+
+    // Get users choice
     cin >> location;
-    if(location < 1 || location > 9) {
-      cout << "Invalid Option! Choose between (1 - 9)" << endl; 
-    }else {
-      // set piece
+
+    // make sure that the location is within range
+    cout << "\n\n\n\n\n\n\n";
+    if (!board.setPiece(location))
+    {
+      cout << "Invalid Option!" << endl;
+      cout << "Choose between (1 - 9)" << endl;
+      cout << "Or a slot that has not been chosen!" << endl;
+      cout << "\n\n\n";
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
+      sleep(1);
+    }
+    else
+    {
       // check if player wins
+      board.checkWin();
     }
   }
 }

@@ -1,26 +1,29 @@
 class Board
 {
 private:
-  int **board;
+  char _players[2];
+  bool _isGameOver;
+  char **board;
   int _size;
   int _activePlayer;
-  char _players[2];
   void allocArray()
   {
-    board = new int *[_size];
+    board = new char *[_size];
     for (int i = 0; i < _size; i++)
     {
-      board[i] = new int[_size];
+      board[i] = new char[_size];
     }
   }
 
 public:
-  Board();
+  Board() : Board(3){};
   Board(int);
   void printBoard();
   void setPlayers(char piece);
   void printPlayersInfo();
-  bool setPiece();
+  void checkWin();
+  bool setPiece(int);
+  bool getGameStatus();
   char getPlayer(int index);
   int getActivePlayer();
   int getSize();
