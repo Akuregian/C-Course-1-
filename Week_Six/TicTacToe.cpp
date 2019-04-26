@@ -7,8 +7,9 @@ Function Displays the Tic Tac Toe Board Game
 @param matrix[3][3] is thr 2 dimensional array holding each place on the board
 @param size is the size of each array
 */
-void boardGame(int matrix[3][3], int size) 
+void boardGame(int matrix[3][3], int size, int playerMove) 
 {
+    // Displays the board game
     int counter = 1;
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
@@ -17,31 +18,34 @@ void boardGame(int matrix[3][3], int size)
         }
     cout << endl << endl;
     }
-
-    
-
 }
 
-void userInput(int matrix[3][3], int size)
+int userInput(int matrix[3][3], int size)
 {
-
+    cout << "What your move: ";
+    int player = 0;
+    cin >> player;
+    return player;
 }
 
 int main()
 {
     const int size = 3;
     int matrix[size][size];
-    // Function that displays the board
-    boardGame(matrix, size);
+    cout << endl;
+    bool winner = false;
 
-    // Function that takes in user input
+    while(!winner) {
+        // Function that takes in user input
+        int playerMove = userInput(matrix, size);
+
+        // Function that displays the board
+        boardGame(matrix, size, playerMove);
+    }
 
     // Function that checks if a player has won
 
     // Function that checks if all slots are filled
-
-    //  
-
 
     return 0;
 }
