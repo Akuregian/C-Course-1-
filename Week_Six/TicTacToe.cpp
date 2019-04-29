@@ -49,6 +49,9 @@ If the user input is between 1 - 9 it will return the players move, else it will
 */
 int userInput(string matrix[3][3])
 {
+    
+    int playerMove;
+
     if(player == 'X') {
         cout << "Player X Turn: ";
     }
@@ -58,21 +61,20 @@ int userInput(string matrix[3][3])
 
     // Check and make sure input is valid
     bool valid = false;
-    int flag = 0;
     while (!valid) {
-        int playerMove;
         cin >> playerMove;
         int i = (playerMove - 1) / 3;
         int j = (playerMove - 1) % 3;
 
 
         if(playerMove > 0 && playerMove < 10 && matrix[i][j] != "X" && matrix[i][j] != "O") {
-                return playerMove;
-            }
+            valid = true;
+        }
         else {
             cout << "Invalid, try Again";
         }
     }
+    return playerMove;
 }
 
 /*
