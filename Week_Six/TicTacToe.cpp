@@ -43,6 +43,7 @@ void updateBaord(string matrix[3][3], int size, int nextMove)
     cout << endl << endl;
     }
 }
+
 /*
 Function will display the current player and then take in the user input
 If the user input is between 1 - 9 it will return the players move, else it will continue to recieve input
@@ -131,7 +132,6 @@ int tieGameChecker(int count, int size)
     }
     else {
         count++;
-        cout << count << endl;
         return count;
     }
 }
