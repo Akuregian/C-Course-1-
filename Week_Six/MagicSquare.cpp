@@ -37,6 +37,7 @@ void userInput(int matrix[4][4], int size)
     int index = 0;
     for(int i = 0; i < size; i++) {
         for(int j = 0; j < size; j++) {
+            cout << "Please Enter numbers (16 total): ";
             cin >> input;
             if(input > 0 && input <= 16){
                 if(indexOf(input, userData, arraySize) > -1) {
