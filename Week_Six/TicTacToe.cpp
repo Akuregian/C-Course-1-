@@ -180,7 +180,6 @@ int main()
         // Function that checks if all slots are filled
         counter = tieGameChecker(counter, size);
 
-
         // Flip players
         togglePlayer();
     }
