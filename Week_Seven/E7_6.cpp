@@ -37,7 +37,9 @@ int main()
 
     char *pointer = find_last(word, 'c');
 
-    cout << "Pointer to last ocurrance of c: " << &pointer << endl;
+    int indexPos = pointer - word; // (Pointer to variable C - word[]) will give you indexPosition of C.
+
+    cout << "Last Occurance of C is found at index: " << indexPos << endl;
 
 
     return 0;
