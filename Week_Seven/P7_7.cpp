@@ -11,45 +11,78 @@ struct Student
     string last;
     char grade[5];
 };
+/*
+Function that takes in a struct
+*/
+void sortByGrade(vector<Student> vec, vector<Student> newVecArray, string grade) 
+{
+
+    for(int i = 0; i < vec.size(); i++) {
+        if(vec[i].grade == grade) {
+            newVecArray.push_back(vec[i]);
+        }
+    }
+    
+    // Display the results
+    for(int i = 0; i < newVecArray.size(); i++) {
+        cout << "| " << newVecArray[i].first << " ";
+        cout << newVecArray[i].last;
+        cout << " Grade: " << newVecArray[i].grade;
+        cout << endl;
+    }
+}
 
 int main()
 {  
+    // Initialize the structure
     Student students;
 
+    // Add a pointer to the address of students
     Student *pointer = &students;
 
     // Creates a vector array for struct Student
     vector <Student> vec;
-    int sentinelVal = 0;
+
+    // Initialize a new vector array of struct for sorting
+    vector <Student> newVecArr;
+    string sentinelVal = "0";
     int i = 0;
     bool run = false;
 
+    // Takes in user input (first name, last name, and grade)
     while(!run) {
-        cout << "Enter First Name: ";
+        cout << "Enter First Name (0 to terminate): ";
         cin >> pointer->first;
-        if(pointer->first == "0") {
+
+        if(pointer->first == sentinelVal) {
             break;
         }
-        vec.push_back(students);
-
         cout << "Please Enter Last Name: ";
         cin >> pointer->last;
-        vec.push_back(students);
 
         cout << "Enter Students Grade: ";
         cin >> pointer->grade;
+
         vec.push_back(students);
         i++;
 
     }
 
-    for(int i = 0; i < vec.size(); i++) {
-        cout << vec[i].first << endl;
-        cout << vec[i].last << endl;
-        cout << vec[i].grade << endl;
-        cout << endl;
-    }
+    // sort the vector by their grades and display
+    //cout << "All Students who got A's " << endl;
+    sortByGrade(vec, newVecArr, "A");
 
-    cout << "End" << endl;
+    //cout << "All Students who got B's " << endl;
+    sortByGrade(vec, newVecArr, "B");
+
+    //cout << "All Students who got C's " << endl;
+    sortByGrade(vec, newVecArr, "C");
+
+    //cout << "All Students who got D's " << endl;
+    sortByGrade(vec, newVecArr, "D");
+
+    //cout << "All Students who got F's " << endl;
+    sortByGrade(vec, newVecArr, "F");
+
     return 0;
 }
