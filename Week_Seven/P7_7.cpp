@@ -1,8 +1,11 @@
 #include <iostream>
+#include <iomanip>
 #include <string>
 #include <vector>
 
 using namespace std;
+
+int longestWord = 0;
 
 // Student Structure consisting of first name, last name and grade.
 struct Student
@@ -22,13 +25,27 @@ void sortByGrade(vector<Student> vec, vector<Student> newVecArray, string grade)
             newVecArray.push_back(vec[i]);
         }
     }
-    
+
     // Display the results
     for(int i = 0; i < newVecArray.size(); i++) {
-        cout << "| " << newVecArray[i].first << " ";
-        cout << newVecArray[i].last;
-        cout << " Grade: " << newVecArray[i].grade;
+        cout << "-> " << newVecArray[i].first << " ";
+        cout << newVecArray[i].last ; 
+
+        int sizeFirst = newVecArray[i].first.length();
+        int sizeSecond = newVecArray[i].last.length();
+        int currentSize = (sizeFirst + sizeSecond);
+        if(currentSize > longestWord) {
+            longestWord = currentSize;
+        }
+        int spacesToPrint = longestWord - currentSize;
+        for(int i = 0; i < spacesToPrint + 2; i++) {
+            cout << " ";
+        }
+
+        cout <<" Grade: " << newVecArray[i].grade;
         cout << endl;
+
+
     }
 }
 
