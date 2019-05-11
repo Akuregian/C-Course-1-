@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <string>
 #include <vector>
+#include <cctype>
 
 using namespace std;
 
@@ -14,12 +15,12 @@ struct Student
     string last;
     char grade[5];
 };
+
 /*
 Function that takes in a struct
 */
 void sortByGrade(vector<Student> vec, vector<Student> newVecArray, string grade) 
 {
-
     for(int i = 0; i < vec.size(); i++) {
         if(vec[i].grade == grade) {
             newVecArray.push_back(vec[i]);
@@ -44,8 +45,6 @@ void sortByGrade(vector<Student> vec, vector<Student> newVecArray, string grade)
 
         cout <<" Grade: " << newVecArray[i].grade;
         cout << endl;
-
-
     }
 }
 
@@ -80,6 +79,15 @@ int main()
         cout << "Enter Students Grade: ";
         cin >> pointer->grade;
 
+        // make sure the grade is upperCase by converting it
+        char upperCaseString;
+        for(int i = 0; i < 1;i++) {
+            upperCaseString = toupper(pointer->grade[i]);
+        }
+
+        *pointer->grade = upperCaseString;
+        
+        // add too new vector of structs
         vec.push_back(students);
         i++;
 
