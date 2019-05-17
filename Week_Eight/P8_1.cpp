@@ -1,6 +1,8 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <sstream>
+
 /*
 Program will search for a specified word in each file thats entered in as an arguments in the command line
 (./a.out wordTooSearchFor -file1.txt -file2.txt)
@@ -22,6 +24,8 @@ int main(int argc, char* argv[])
         // word to search for
         string wordSearch = argv[1]; 
 
+        string wordSearch1 = wordSearch + '.';
+
         // checks the first aguments and see if it has a -
         if(arg[0] == '-') {
 
@@ -32,8 +36,6 @@ int main(int argc, char* argv[])
             ifstream file_open; 
             file_open.open(file1); //open up the file
 
-            cout << "Word to Seach for is: " << wordSearch << endl;
-
             //print out the files name
             cout << endl << file1 << ": ";
 
@@ -41,23 +43,13 @@ int main(int argc, char* argv[])
             string line;
             string word;
             while(getline(file_open, line)) {
-                for(int i = 0; i < line.length(); i++) {
-                    if(line[i] == ' ') {
-                        if(line[i+1] != ' ') {
-                            if(word == wordSearch) {
-                                cout << line << endl;
-                                break;
-                            }
-                        }
-                        if(line[i + 1] == ' ') {
-                            cout << "Possibly the end of the line" << endl;
-                            cout << word << endl;
-                        }
 
-                        word = "";
-                    }
-                    else {
-                        word += line[i];
+                // Search the line retrieved for the word
+                istringstream lineWords(line);
+                while(lineWords >> word) {
+                    if(word == wordSearch || word == wordSearch1) {
+                        cout << line << endl;
+                        break;
                     }
                 }
             }
