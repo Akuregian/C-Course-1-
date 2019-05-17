@@ -1,0 +1,5 @@
+This is for testing purposes
+I have decided too create
+this text file so that im able 
+too pull it in from my program anthony and see if its
+operating as it shoulkd be.
