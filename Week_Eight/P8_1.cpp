@@ -4,8 +4,9 @@
 #include <sstream>
 
 /*
+programsName.cpp wordToSearchFor -file1.txt -file2.txt -file3.txt
+
 Program will search for a specified word in each file thats entered in as an arguments in the command line
-(./a.out wordTooSearchFor -file1.txt -file2.txt)
 and then returns the number of times that word is found in each file specified
 */
 
@@ -24,6 +25,7 @@ int main(int argc, char* argv[])
         // word to search for
         string wordSearch = argv[1]; 
 
+        // same word at the end of a line with a '.'
         string wordSearch1 = wordSearch + '.';
 
         // checks the first aguments and see if it has a -
@@ -56,6 +58,10 @@ int main(int argc, char* argv[])
 
             cout << endl << endl;
             i++;
+        }
+        else if(arg[0] != '-') {
+            cout << "No File was inputed, or your forget the dash '-' " << endl;
+            return 1;
         }
     }
 
