@@ -32,14 +32,17 @@ Process the Pixel and change the color of images
 */
 void processPixel(int& blue, int& green, int& red) 
 {
-    blue = 0.299 * red + 0.587 * green + 0.114 * blue;
-    red =0.299 * red + 0.587 * green + 0.114 * blue;
-    green = 0.299 * red + 0.587 * green + 0.114 * blue;
+    // blue = 0.299 * red + 0.587 * green + 0.114 * blue;
+    // red =0.299 * red + 0.587 * green + 0.114 * blue;
+    // green = 0.299 * red + 0.587 * green + 0.114 * blue;
 
-    blue = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-    red = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-    green = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
+    // blue = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
+    // red = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
+    // green = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
 
+    blue = 0.6 * red + 0.12 * green + 0.23 * blue;
+    red = 0.6 * red + 0.12 * green + 0.23 * blue;
+    green = 0.6 * red + 0.12 * green + 0.23 * blue;
 }
 
 int main()
