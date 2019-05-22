@@ -32,17 +32,9 @@ Process the Pixel and change the color of images
 */
 void processPixel(int& blue, int& green, int& red) 
 {
-    // blue = 0.299 * red + 0.587 * green + 0.114 * blue;
-    // red =0.299 * red + 0.587 * green + 0.114 * blue;
-    // green = 0.299 * red + 0.587 * green + 0.114 * blue;
-
-    // blue = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-    // red = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-    // green = 0.2989 * red + 0.5870 * green + 0.1140 * blue;
-
-    blue = 0.6 * red + 0.12 * green + 0.23 * blue;
-    red = 0.6 * red + 0.12 * green + 0.23 * blue;
-    green = 0.6 * red + 0.12 * green + 0.23 * blue;
+    blue = (red * 0.3 + green * 0.59 + blue * 0.11);
+    red = (red * 0.3 + green * 0.59 + blue * 0.11);
+    green = (red * 0.3 + green * 0.59 + blue * 0.11);
 }
 
 int main()
@@ -54,6 +46,11 @@ int main()
 
     fstream queenMary;
     queenMary.open(fileName, ios::in | ios::out | ios::binary);
+    if(queenMary.fail()) 
+    {
+        cout << "File Not Found" << endl;
+        return 0;
+    }
 
     // get the image dimensions
     int file_size = get_int(queenMary, 2); // Size of the file
@@ -88,8 +85,9 @@ int main()
             int red = queenMary.get();
 
             // Process the Pixel
-            processPixel(blue, green, red);
-
+            for(int i = 0; i < 3; i++) {
+                processPixel(blue, green, red);
+            }
             // go back to the starting point of the image
             queenMary.seekg(pos);
 

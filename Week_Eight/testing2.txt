@@ -1,5 +1,0 @@
-this is another test
-program too pull
-in informatin
-regarding my project that im 
-writing for my c++ class
