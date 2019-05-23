@@ -15,16 +15,30 @@ using namespace std;
 
 int main(int argc, char* argv[]) 
 {
+    // make sure there is a search word
+    string arg = argv[1];
+    if(arg[0] == '-') 
+    {
+        cout << "no seach word was inputed" << endl;
+        return 1;
+    }
+    // Make sure there are atleast 3 arguments.
+    if(argc <= 2) 
+    {
+        cout << "Not Enough Arguments, must contain a search word and a file to search." << endl;
+        return 1;
+    }
 
     //command line arugument
     int i = 2;
-    while(i < argc) {
+    while(i < argc) {   
 
         //argument that was entered in the command line
         string arg = argv[i];
 
         // word to search for
         string wordSearch = argv[1]; // 1 b/c its the second argument, 0 being the files name
+
 
         // checks the first aguments and see if it has a -
         if(arg[0] == '-') {
@@ -35,6 +49,12 @@ int main(int argc, char* argv[])
             // use it too open up a file
             ifstream file_open; 
             file_open.open(file1); //open up the file
+
+            // Check if the file exists within the directory
+            if(file_open.fail()) {
+                cout << "No File was found" << endl;
+                return 1;
+            }
 
             //print out the files name
             cout << endl << file1 << ": ";
@@ -57,7 +77,7 @@ int main(int argc, char* argv[])
             i++;
         }
         else if(arg[0] != '-') {
-            cout << "No File was inputed, or your forget the dash '-' before the file name" << endl;
+            cout << "No File was inputed or your forget the dash '-' before the file name (-Filename.txt)" << endl;
             return 1;
         }
     }
