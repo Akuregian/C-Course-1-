@@ -31,10 +31,11 @@ Process the Pixel and change the color of images
 @param green is the green pixel
 */
 void processPixel(int& blue, int& green, int& red) 
-{
-    blue = (red * 0.3 + green * 0.59 + blue * 0.11);
-    red = (red * 0.3 + green * 0.59 + blue * 0.11);
-    green = (red * 0.3 + green * 0.59 + blue * 0.11);
+{  
+    int gray = (0.3 * red + 0.59 * green + 0.11 * blue);
+    red = gray;
+    green = gray;
+    blue = gray;
 }
 
 int main()
