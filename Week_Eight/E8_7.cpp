@@ -29,7 +29,6 @@ int main()
     // get the file size
     fileToBeReversed.seekg(0, ios::end);
     int fileSize = fileToBeReversed.tellg();
-    cout <<  "This is the file size: " << fileSize << endl;
 
     //read each line
     int i = -2;
