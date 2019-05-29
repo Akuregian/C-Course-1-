@@ -57,10 +57,47 @@ void Microwave::start()
 int main()
 {
     Microwave wave;
+
+    // ** Edit these Parameters to control the Microwave
     wave.reset();
-    wave.increase_time();
-    wave.increase_time();
-    wave.switch_power_level();
+
+    cout << "Enter Power Level (1 or 2): ";
+    int powerLevel;
+    cin >> powerLevel;
+    if(cin.fail())
+    {
+        cout << "Entered Invalid Input, try again" << endl;
+        return 1;
+    }
+    else if(powerLevel > 0 && powerLevel < 3)
+    {
+        if(powerLevel == 2) 
+        {
+            wave.switch_power_level();
+        }
+    }
+    else
+    {
+        cout << "Out of range.. input should be a 1 or 2" << endl;
+        return 1;
+    }
+    
+
+
+    cout << "How many times would you like to add 30 seconds? ";
+    int numTimes;
+    cin >> numTimes;
+    if(cin.fail())
+    {
+        cout << "Must be an integer" << endl;
+        return 1;
+    }
+
+    for(int i = 0; i <= numTimes; i++) 
+    {
+        wave.increase_time();
+    }
+
     wave.start();
 
     return 0;

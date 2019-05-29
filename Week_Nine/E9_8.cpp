@@ -83,7 +83,7 @@ int main()
     double avg = student1.get_avg_score();
 
     cout << endl << "The Student " << name << " has the following: " << endl;
-    cout << "Score is: " << score << endl;
+    cout << "Cumulative Score is: " << score << endl;
     cout << "Average is: " << avg << endl;
 
     return 0;
