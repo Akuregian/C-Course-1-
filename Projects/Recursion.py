@@ -9,6 +9,16 @@ def n_To_The_Power(number, power):
 			sequence.append(element)
 	return sequence
 
+def numberToPower(number, power):
+	sequence = []
+	for i in range(1, power):
+		element = number ** i
+		if i == 0:
+			sequence = [element]
+		else:
+			sequence.append(element)
+	return sequence
+
 def n_Factorial(number):
 	factorial = 1
 	newSequence = []
@@ -32,7 +42,7 @@ def Fibonacci(n):
 	elif n == 1: 
 		return b 
 	else: 
-		for i in range(2,n):
+		for _ in range(2,n):
 			c = a + b 
 			a = b
 			b = c 
@@ -40,30 +50,41 @@ def Fibonacci(n):
 		return fib_List 
 
 def my_List():
-	list = []
-	for i in range(0, 10):
-		input_List = input("Enter 10 elements in a list to be graphed: ")
-		list.append(input_List)
-	print(list)
+	mylist = []
+	for _ in range(10):
+		mylist.append(int(input("Enter 10 numbers to be graphed: ")))
+
+	return mylist
 
 def main():
-	print(n_To_The_Power(10, 2))
-	print(n_To_The_Power(10, 3))
-	print(n_To_The_Power(10, 4))
-	print(n_Factorial(8))
-	print(Fibonacci(9))
-	#my_List()
 
-plt.rcParams["figure.figsize"] = (15, 8)
-plt.plot(n_To_The_Power(30, 2), '-r', label = 'n^2')
-plt.plot(n_To_The_Power(27, 3), '-b', label = 'n^3')
-plt.plot(n_To_The_Power(15, 4), '-g', label = 'n^4')
-plt.plot(n_Factorial(8), '-k', label = '!n')
-plt.plot(Fibonacci(25), '--', label = 'Fibonacci')
-plt.xlabel("Iterations")
-plt.ylabel("Values")
-plt.legend()
-plt.show()
+	print("n2: ", n_To_The_Power(10, 2))
+	print("n3: ", n_To_The_Power(10, 3))
+	print("n4: ", n_To_The_Power(10, 4))
+	print("2n: ", numberToPower(2, 10))
+	print("3n: ", numberToPower(3, 10))
+	print("!n: ", n_Factorial(8))
+	print("fn: ", Fibonacci(9))
+
+	mySequence = input("Would you like to enter a sequence to compare?(y/n)")
+	newList = []
+	if(mySequence == 'y'):
+		newList = my_List()
+
+
+	plt.rcParams["figure.figsize"] = (15, 8)
+	plt.plot(n_To_The_Power(30, 2), '-r', label = 'n^2')
+	plt.plot(n_To_The_Power(27, 3), '-b', label = 'n^3')
+	plt.plot(n_To_The_Power(15, 4), '-g', label = 'n^4')
+	plt.plot(n_Factorial(8), '-k', label = '!n')
+	plt.plot(Fibonacci(25), '--', label = 'Fibonacci')
+	plt.plot(numberToPower(2, 10), '-c', label = '2n')
+	plt.plot(numberToPower(3, 10), '-y', label = '3n')
+	plt.plot(newList, 'm', label = 'Your List')
+	plt.xlabel("Iterations")
+	plt.ylabel("Values")
+	plt.legend()
+	plt.show()
 
 if __name__ == '__main__':
 	main()
