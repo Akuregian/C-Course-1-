@@ -21,51 +21,53 @@ struct Course
 // void print_students(Student* s) will print the name of the students and all the courses he has taken
 void print_student(Student* s)
 {
-    cout << "Student " << s << endl;
+    cout << "Student " << s->name << endl;
+
+    for(int i = 0; i < s->courses.size(); i++)
+    {
+        cout << s->courses[i]->name << endl;
+    }
+    cout << endl;
 }
 
 // void print_course(Course* c) prints the name of the course and all students in the course
 void print_course(Course* c)
 {
-    cout << "Courses: " << c << endl;
+    cout << "Courses: " << c->name << endl;
 }
 
 // void enroll_students(Student* s, Course* c) will enroll the student into given course, updating both vectors
-void enroll(Student* s, Course* c) 
+void enroll(Student* s, Course* c)
 {
-    
-}
+    s->courses.push_back(c);
+    c->students.push_back(s);
+} 
 
 int main() 
 {
-    Student* students;
-    Course* courses;
+    Student student[3];
 
-    //define several students
-    string student1 = "Albert";
-    string student2 = "Micheal";
-    string student3 = "Anthony";
-    string student4 = "John";  
+    student[0].name = "Anthony";
+    student[1].name = "Johnny";
+    student[2].name = "Marky Mark";
 
-    //define several classes
-    string class1 = "Calculus 3";
-    string class2 = "Physics 201";
-    string class3 = "CIS 201";
-    string class4 = "Math 101";
+    Course course[3];
 
-    cout << "Checkout Point1" << endl;
-    enroll(students, courses);
+    course[0].name = "CIS 201";
+    course[1].name = "Physics 201";
+    course[2].name = "Calculus";
 
-    cout << "Checkpoint2" << endl;
-    //enroll them into class
-    // enroll();
-    // enroll();
-    // enroll();
-    // enroll();
-    //print_student(student);
-    //print_course(course);
-
-
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            enroll(&student[i], &course[j]);
+        }
+    }
+    for (int i = 0; i < 3; i++)
+        print_student(&student[i]);
+    for(int i = 0; i < 3; i++)
+        print_course(&course[i]);
 
     return 0;
 }
