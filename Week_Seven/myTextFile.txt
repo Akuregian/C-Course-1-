@@ -1,0 +1,7 @@
+this is a random text file that is used for testing purposes
+I am practicing C++ Code
+and 
+this
+is 
+a
+way of practicing

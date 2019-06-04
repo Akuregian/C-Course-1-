@@ -17,7 +17,10 @@ struct Student
 };
 
 /*
-Function that takes in a struct
+Function that takes in a vector of structs that searched for a grade specified and appends it into a new vector
+@param vector<Student> vec is the original vector to be sorted
+@param vector<Student> newVecArray is the sorted vector
+@param string grade will be the grade thats searched for and appeneded to the new vector
 */
 void sortByGrade(vector<Student> vec, vector<Student> newVecArray, string grade) 
 {
@@ -61,12 +64,15 @@ int main()
 
     // Initialize a new vector array of struct for sorting
     vector <Student> newVecArr;
+
+    // variables
     string sentinelVal = "0";
-    int i = 0;
     bool run = false;
+    string gradeBound = "abcdf";
 
     // Takes in user input (first name, last name, and grade)
     while(!run) {
+        bool grader = false;
         cout << "Enter First Name (0 to terminate): ";
         cin >> pointer->first;
 
@@ -78,6 +84,18 @@ int main()
 
         cout << "Enter Students Grade: ";
         cin >> pointer->grade;
+        cout << "Here" << endl;
+        for(int i; i < gradeBound.length(); i++) {
+            if(*pointer->grade == gradeBound[i]) {
+                grader = true;
+                break;
+            }
+        }
+        if(!grader) {
+            cout << "Enter Students Grade: " << endl;
+            cin >> pointer->grade;
+        }
+
 
         // make sure the grade is upperCase by converting it
         char upperCaseString;
@@ -89,24 +107,14 @@ int main()
         
         // add too new vector of structs
         vec.push_back(students);
-        i++;
 
     }
 
     // sort the vector by their grades and display
-    //cout << "All Students who got A's " << endl;
     sortByGrade(vec, newVecArr, "A");
-
-    //cout << "All Students who got B's " << endl;
     sortByGrade(vec, newVecArr, "B");
-
-    //cout << "All Students who got C's " << endl;
     sortByGrade(vec, newVecArr, "C");
-
-    //cout << "All Students who got D's " << endl;
     sortByGrade(vec, newVecArr, "D");
-
-    //cout << "All Students who got F's " << endl;
     sortByGrade(vec, newVecArr, "F");
 
     return 0;

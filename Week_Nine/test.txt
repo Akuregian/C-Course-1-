@@ -1,0 +1,6 @@
+R9.2: An implementation might pre﻿﻿﻿fer the second version if the user is trying to find out how long its been since a specific date, such as January 1st, 1990.Adding these two different implementation to the class
+
+doesn't affect the user of the class at all. It can be a method defined inside the class and doesn't  need to be called, unless the user decides to call that method.
+
+
+R9.3:
