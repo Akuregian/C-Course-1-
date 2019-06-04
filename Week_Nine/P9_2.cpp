@@ -1,10 +1,46 @@
 #include <iostream>
 #include <cstring>
 #include <string>
+#include <string.h>
 #include <iomanip>
 
 using namespace std;
 
+/*
+Void removesSpaces Function will Remove white spaces from a string
+@param string* str will be the string inputed
+*/
+string removesSpaces(string &str)
+{
+    int size = str.length();
+    for(int j = 0; j<=size; j++)
+    {
+        for(int i = 0; i <=j; i++)
+        {
+            if(str[i] == ' ' && str[i+1] == ' ')
+            {
+                str.erase(str.begin() + i);
+            }
+            else if(str[0]== ' ')
+            {
+                str.erase(str.begin());
+            }
+            else if(str[i] == '\0' && str[i-1]== ' ')
+            {
+                str.erase(str.end() - 1);
+            }
+        }
+    }
+    return str;
+}
+
+/*
+Class Person will create friendships and also unfriend friendships
+void befriends will add new friendships
+void unfriend will delete existing friendships
+@string get_friend_names() const will grab the current friendships
+void find_name will find the name in the string of friendships
+*/
 class Person
 {
     public:
@@ -31,6 +67,8 @@ void Person::find_name(string nameToFind)
     if(friends.find(nameToFind) != string::npos)
     {
         friends = friends.substr(0, found) + friends.substr(found + nameToFind.length());
+        friends = removesSpaces(friends);
+        cout << "Friends: " << friends << endl;
     }
 }
 
@@ -49,7 +87,6 @@ string Person::get_friend_names() const
 {
     return friends;
 }
-
 
 
 int main()
@@ -88,10 +125,10 @@ int main()
     if (view == 'y')
     {
         // Current Friendships   
-        cout << endl <<"-> Anthonys Friends: " << setw(10) << Anthony.get_friend_names() << endl;
-        cout << "-> Johns Friends: " <<  setw(10) << John.get_friend_names() << endl;
-        cout << "-> Phillips Friends: " << setw(10) << Phillip.get_friend_names() << endl;
-        cout << "-> Tuckers Friends: " << setw(10) << Tucker.get_friend_names() << endl << endl;
+        cout << endl <<"-> Anthonys Friends: " << Anthony.get_friend_names() << endl;
+        cout << "-> Johns Friends: " << John.get_friend_names() << endl;
+        cout << "-> Phillips Friends: "  << Phillip.get_friend_names() << endl;
+        cout << "-> Tuckers Friends: " << Tucker.get_friend_names() << endl << endl;
     }
 
     // Befriendings
@@ -106,7 +143,7 @@ int main()
     Tucker.unfriend(John);
 
     cout << "After the unfriendings, the current friendships are: " << endl;
-    cout << endl <<"-> Anthonys Friends: "  << Anthony.get_friend_names() << endl;
+    cout << endl << "-> Anthonys Friends: "  <<Anthony.get_friend_names() << endl;
     cout << "-> Johns Friends: " << John.get_friend_names() << endl;
     cout << "-> Phillips Friends: " << Phillip.get_friend_names() << endl;
     cout << "-> Tuckers Friends: "  << Tucker.get_friend_names() << endl;
