@@ -1,5 +1,8 @@
 #include <iostream>
 
+/*
+    program simulates a microwave
+*/
 
 using namespace std;
 

@@ -2,6 +2,13 @@
 #include <vector>
 #include <string>
 
+/*
+    Program has Student Struct and Course Struct which both are Vector members
+    of eachother. They Both can be called and stored students information such as
+    courses enrolled and all students enrolled into a specified class
+*/
+
+
 using namespace std;
 
 // structures

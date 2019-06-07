@@ -2,6 +2,12 @@
 #include <fstream>
 #include <string>
 
+/*
+program will Ask a user for a text file and then deletes all blank lines at the beggening
+and end of the file.
+It then re-writes this to the original file.
+ */
+
 using namespace std;
 
 
@@ -36,7 +42,7 @@ void remove_breaks(ifstream& file, ofstream& file_out) {
     ofstream new_file_out;
     new_file_out.open("testing.txt");
     
-    
+
     for(int i = 0; i <= last_count - 1; ++i) {
         getline(new_file, line);
         if (i == last_count - 1) {

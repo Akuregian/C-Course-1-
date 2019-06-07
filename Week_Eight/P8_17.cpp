@@ -3,6 +3,11 @@
 #include <cstdlib>
 #include <string>
 
+/*
+    Program will covert a .bmp image into grayscale
+    using specific information gathered from the 24 bit string (4 total)
+*/
+
 
 using namespace std;
 

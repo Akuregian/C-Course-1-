@@ -1,6 +1,11 @@
 #include <iostream>
 #include <string>
 
+/*
+    Program will initialize a student with the Student class and
+    adds x amount of quizes that will be averaged at the end.
+*/
+
 using namespace std;
 
 

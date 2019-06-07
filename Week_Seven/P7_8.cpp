@@ -4,6 +4,11 @@
 #include <vector>
 #include <cctype>
 
+/*
+    program takes in x amount of students and asks for their grade.
+    it then sorts the students by grades and print its out to screen
+*/
+
 using namespace std;
 
 int longestWord = 0;

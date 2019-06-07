@@ -2,7 +2,9 @@
 
 using namespace std;
 
-
+/*
+	program that sorts two array and then compares them to determine if there a match
+*/
 
 /*__________________________________________________________
 Swap Function that swaps two index positions

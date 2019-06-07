@@ -2,6 +2,11 @@
 #include <vector>
 #include <string>
 
+/*
+    program inputs x amount of customers and their total purchase price, 
+    then computes the best customer who had the highest purchase price
+*/
+
 using namespace std;
 
 void best_customer_name(vector<double> sales_price, vector<string> customers)

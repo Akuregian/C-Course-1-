@@ -1,6 +1,10 @@
 #include <iostream>
 #include <cmath>
 
+/*
+    Program computes the perimiter of a triangle using coordinates
+*/
+
 using namespace std;
 
 double formula(int x2, int x1, int y2, int y1)
