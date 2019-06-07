@@ -70,7 +70,7 @@ int main(int argc, char* argv[])
                     if(word.find(wordSearch) != string::npos) { 
                         cout << line << endl;
                     }
-                }
+                }  
             }
 
             cout << endl << endl;
